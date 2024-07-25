@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // create two random numbers between 1 and 25
 function runGame(gameType) {
-
+  
 	// Generate two random numbers between 1 and 25
 	// Math.floor rounds down to the whole number
 	// Math.random generates random numbers
@@ -91,7 +91,9 @@ function calculateCorrectAnswer() {
     return [operand1 * operand2, "multiply"];
   } else if (operator === "-") {
     return [operand1 - operand2, "subtract"];
-  } else {
+  } else if (operator === "/") {
+    return [operand1 / operand2, "divide"];
+  }else {
     alert(`unimplemented operator ${operator}`);
     throw `unimplemented operator ${operator}. Aborting!`;
   }
@@ -132,4 +134,10 @@ function displayMultiplyQuestion(operand1, operand2) {
   document.getElementById('operand1').textContent = operand1;
   document.getElementById('operand2').textContent = operand2;
   document.getElementById('operator').textContent = "x";
+}
+
+function displayDivideQuestion(operand1, operand2) {
+  document.getElementById('operand1').textContent = operand1 > operand2 ? operand1 : operand2;
+  document.getElementById('operand2').textContent = operand1 > operand2 ? operand2 : operand1;
+  document.getElementById('operator').textContent = "/";
 }
